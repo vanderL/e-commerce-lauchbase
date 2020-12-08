@@ -1,0 +1,99 @@
+        <div class="item">
+            <div>Categoria</div>
+            <div>
+                <select name="category_id">
+                    {% for category in categories%}
+                        <option value="{{category.id}}" {% if products.category_id == categories.id %} selected{% endif %}>
+                            {{category.name}}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="item">
+            <div></div>
+            <div>
+                <input 
+                    type="text"
+                    name=""
+                    placeholder=""
+                    value="{{}}"
+                    >
+            </div>
+        </div>
+        <div class="item">
+            <div></div>
+            <div>
+                <input 
+                    type="text"
+                    name=""
+                    placeholder=""
+                    value="{{chip.}}">
+            </div>
+        </div>
+        <div class="item">
+            <div></div>
+            <div>
+                <input 
+                    type="text"
+                    name=""
+                    placeholder=""
+                    value="{{}}">
+            </div>
+        </div>
+        <div class="item">
+            <div></div>
+            <div>
+                <input 
+                    type="date"
+                    name=""
+                    value="{{}}">
+            </div>
+        </div>
+        <div class="item">
+            <div></div>
+            <div>
+                <span>
+                    <input 
+                        type="radio"
+                        name="status"
+                        value="1"
+                        {% if chip.status == '1'%}
+                            checked
+                        {% endif%}
+                        >ATIVO
+                </span>
+                <span>
+                    <input 
+                        type="radio"
+                        name="status"
+                        value="0"
+                        {% if chip.status == '0'%}
+                            checked
+                        {% endif%}
+                        >DESATIVO
+                </span>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div></div>
+            <div>
+                <input 
+                    type="text"
+                    name=""
+                    placeholder=""
+                    value="{{}}">
+            </div>
+        </div>
+        <div class="item">
+            <div></div>
+            <div>
+                <input 
+                    type="text"
+                    name=""
+                    placeholder=""
+                    value="{{}}">
+            </div>
+        </div>
+        <button type="submit">Salvar</button>
