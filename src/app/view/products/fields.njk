@@ -11,47 +11,54 @@
             </div>
         </div>
         <div class="item">
-            <div></div>
+            <div>Name</div>
             <div>
                 <input 
                     type="text"
-                    name=""
-                    placeholder=""
-                    value="{{}}"
+                    name="name"
+                    placeholder="Digite o Título do Anúncio"
+                    value="{{product.name}}"
                     >
             </div>
         </div>
         <div class="item">
-            <div></div>
+            <div>Descrição</div>
+            <div>
+                <textarea name="description">
+                    {{product.description}}
+                </textarea>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>Valor</div>
             <div>
                 <input 
                     type="text"
-                    name=""
-                    placeholder=""
-                    value="{{chip.}}">
+                    name="price"
+                    placeholder="Preço do Produto"
+                    value="{{ product.price}}">
+                    {# Faremos uma máscara de dinheiro/reais#}
             </div>
+            {% if product.old_price %}
+                <input type="hidden" name="old_price" value={{product.old_price}}>
+            {% endif %}
         </div>
+        
         <div class="item">
-            <div></div>
+            <div>Quantidade</div>
             <div>
                 <input 
-                    type="text"
-                    name=""
-                    placeholder=""
-                    value="{{}}">
+                    type="number"
+                    name="quantify"
+                    placeholder="Estoque Disponível"
+                    value="{{ product.quantify }}">
             </div>
         </div>
+
+        {% if product.status %}
         <div class="item">
-            <div></div>
-            <div>
-                <input 
-                    type="date"
-                    name=""
-                    value="{{}}">
-            </div>
-        </div>
-        <div class="item">
-            <div></div>
+            <div>Disponível ?</div>
             <div>
                 <span>
                     <input 
@@ -61,7 +68,7 @@
                         {% if chip.status == '1'%}
                             checked
                         {% endif%}
-                        >ATIVO
+                        >SIM
                 </span>
                 <span>
                     <input 
@@ -71,29 +78,9 @@
                         {% if chip.status == '0'%}
                             checked
                         {% endif%}
-                        >DESATIVO
+                        >NÃO
                 </span>
             </div>
         </div>
-        
-        <div class="item">
-            <div></div>
-            <div>
-                <input 
-                    type="text"
-                    name=""
-                    placeholder=""
-                    value="{{}}">
-            </div>
-        </div>
-        <div class="item">
-            <div></div>
-            <div>
-                <input 
-                    type="text"
-                    name=""
-                    placeholder=""
-                    value="{{}}">
-            </div>
-        </div>
-        <button type="submit">Salvar</button>
+        {% endif %}
+        <button class="button" type="submit">Salvar</button>
