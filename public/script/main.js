@@ -1,16 +1,10 @@
-const currentPage = location.pathname
-const menuItems = document.querySelectorAll("header .links a")
+const input = document.querySelector('input[name="price"]')
+input.addEventListener("keydown", function(e) {
+    
+    setTimeout(function() {
+        let {value} = e.target
+        value = value.replace(/\D/g, "")
+        e.target.value = value
 
-for(item of menuItems){
-   if(currentPage.includes(item.getAttribute("href"))) {
-       item.classList.add("active")
-   }
-}
-
-const formDelete = document.querySelector("#form-delete")
-formDelete.addEventListener("submit", function(event){
-    const confirmation = confirm("Deseja mesmo deletar??")
-    if(!confirmation){
-        event.preventDefault()
-    }
+    }, 1)
 })
