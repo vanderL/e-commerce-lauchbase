@@ -9,6 +9,7 @@ router.get('/', function (req, res) {
 
 router.get('/products/create', ProductController.create)
 router.get('/products/:id/edit', ProductController.edit)
+router.put('/products', ProductController.put)
 router.post('/products', ProductController.post)
 
 //Alias

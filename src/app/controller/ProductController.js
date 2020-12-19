@@ -5,8 +5,8 @@ const Product = require('../models/Product');
 
 
 module.exports = {
-    create(req, res) {
-        Category.all()
+    async create(req, res) {
+       await Category.all()
         .then(function(results) {
            
             const categories = results.rows
@@ -29,7 +29,10 @@ module.exports = {
         let result = await Product.create(req.body)
         const productId = result.rows[0].id
 
-        return res.render(`products/${productId}`, { productId, categories })
+        result = await Category.all()
+        const categories = result.rows
+
+        return res.render(`products/${productId}/edit`, { productId, categories })
     },
 
     async edit (req, res){
@@ -45,5 +48,25 @@ module.exports = {
         const categories = result.rows
 
         return res.render('products/edit', { product, categories })
+    },
+    async put (req, res){
+        const keys = Object.keys(req.body)
+
+        for(key of keys) {
+            if (req.body[key] == "") {
+                return res.send('Please, fill')
+            }
+        }
+
+        req.body.price = req.body.price.replace(/\D/g, "")
+
+        if(req.body.old_price != req.body.price) {
+            const oldProduct = await Product.find(req.body.id)
+            req.body.old_price = oldProduct.rows[0].price
+        }
+
+        await Product.update(req.body)
+
+        return res.redirect(`/products/${req.body.id}/edit`)
     }
 }
