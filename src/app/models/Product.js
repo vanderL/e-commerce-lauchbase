@@ -44,7 +44,7 @@ module.exports = {
                 old_price=($5),
                 quantity=($7),
                 status=($8)
-            WHERE id =$9
+            WHERE id = $9::integer
         `
 
         const value = [

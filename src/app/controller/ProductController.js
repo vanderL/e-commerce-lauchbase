@@ -32,7 +32,7 @@ module.exports = {
         result = await Category.all()
         const categories = result.rows
 
-        return res.render(`products/${productId}/edit`, { productId, categories })
+        return res.render(`products/create.njk`, { productId, categories })
     },
 
     async edit (req, res){
@@ -47,7 +47,7 @@ module.exports = {
         result = await Category.all()
         const categories = result.rows
 
-        return res.render('products/edit', { product, categories })
+        return res.render('products/edit.njk', { product, categories })
     },
     async put (req, res){
         const keys = Object.keys(req.body)

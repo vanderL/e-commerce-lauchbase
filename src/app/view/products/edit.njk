@@ -13,13 +13,13 @@
                 <input
                     type="hidden"
                     name="id"
-                    value="{{ product.id}}">
+                    value="{{product.id}}">
             </div>
 
             <button class="button edit" type="submit">Atualizar</button>
             
             <form id="form-delete" action="/members?_method=DELETE" method="post">
-                <input type="hidden" name="id" value="{{ product.id}}">
+                <input type="hidden" name="id" value="{{product.id}}">
                 <button class="button delete" type="submit">Delete</button>
             </form>
         </form>
