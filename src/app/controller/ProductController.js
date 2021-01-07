@@ -2,6 +2,7 @@ const { formatPrice } = require('../../lib/utils')
 
 const Category = require('../models/Category');
 const Product = require('../models/Product');
+const File = require('../models/File');
 
 
 module.exports = {
@@ -26,13 +27,22 @@ module.exports = {
             }
         }
 
+        if (req.files.length == 0) {
+            return res.send('Please, send at one image')
+        }
+
         let result = await Product.create(req.body)
         const productId = result.rows[0].id
+
+        const filesPromise = req.files.map(file =>
+            File.create({ name: file.filename, path: file.path, productId }))
+        await Promise.all(filesPromise)
+
 
         result = await Category.all()
         const categories = result.rows
 
-        return res.render(`products/create.njk`, { productId, categories })
+        return res.redirect(`products/${productId}/edit`)
     },
 
     async edit (req, res){

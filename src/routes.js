@@ -10,8 +10,8 @@ router.get('/', function (req, res) {
 
 router.get('/products/create', ProductController.create)
 router.get('/products/:id/edit', ProductController.edit)
-router.put('/products', multer.array("photos", 6),ProductController.put)
-router.post('/products', multer.array("photos", 6),ProductController.post)
+router.put('/products', multer.array("photo", 6),ProductController.put)
+router.post('/products', multer.array("photo", 6),ProductController.post)
 
 //Alias
 router.get('/ads/create', function(req, res) {
