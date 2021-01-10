@@ -17,34 +17,28 @@ module.exports = {
             throw new Error(err)
         })        
     },
-
-   async post(req, res){
+    async post(req, res) {
         const keys = Object.keys(req.body)
 
         for(key of keys) {
             if (req.body[key] == "") {
-                return res.send('Please, fill all fields')
+                return res.send('Please, fill all fields!')
             }
         }
 
-        if (req.files.length == 0) {
-            return res.send('Please, send at one image')
-        }
+        if (req.files.length == 0)
+            return res.send('Please, send at least one image')
 
-        let result = await Product.create(req.body)
-        const productId = result.rows[0].id
+        
+        let results = await Product.create(req.body)
+        const productId = results.rows[0].id
 
-        const filesPromise = req.files.map(file =>
-            File.create({ name: file.filename, path: file.path, productId }))
+        const filesPromise = req.files.map(file => File.create({...file, product_id: productId}))
         await Promise.all(filesPromise)
 
+        return res.redirect(`/products/${productId}/edit`)
 
-        result = await Category.all()
-        const categories = result.rows
-
-        return res.redirect(`products/${productId}/edit`)
     },
-
     async edit (req, res){
         let result = await Product.find(req.params.id)
         const product = result.rows[0]
