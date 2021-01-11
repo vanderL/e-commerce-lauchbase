@@ -44,6 +44,17 @@
                 </div>
                 
                 <div id="photos-preview">
+                    {% if files %}
+                        {% for image in files %}
+                            <div class="photo" id="{{image.id}}">
+                                <img src="{{image.src}}" alt="{{image.name}}">
+                                <i class="material-icons"
+                                    onclick="PhotosUpload.removeOldPhoto(event)"
+                                >close</i>
+                            </div>
+                        {% endfor %}
+                        <input type="hidden" name="removed_files">
+                    {% endif %}
                 </div>
             
             </div>
@@ -71,9 +82,9 @@
             <div>
                 <input 
                     type="number"
-                    name="quantify"
+                    name="quantity"
                     placeholder="Estoque Disponível"
-                    value="{{ product.quantify }}">
+                    value="{{ product.quantity }}">
             </div>
         </div>
 
@@ -86,7 +97,7 @@
                         type="radio"
                         name="status"
                         value="1"
-                        {% if chip.status == '1'%}
+                        {% if product.status == '1'%}
                             checked
                         {% endif%}
                         >SIM
@@ -96,7 +107,7 @@
                         type="radio"
                         name="status"
                         value="0"
-                        {% if chip.status == '0'%}
+                        {% if product.status == '0'%}
                             checked
                         {% endif%}
                         >NÃO
