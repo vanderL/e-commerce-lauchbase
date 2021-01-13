@@ -13,6 +13,7 @@ router.get('/products/create', ProductController.create)
 router.get('/products/:id/edit', ProductController.edit)
 router.put('/products', multer.array("photo", 6),ProductController.put)
 router.post('/products', multer.array("photo", 6),ProductController.post)
+router.delete('/products', ProductController.delete)
 
 //Alias
 router.get('/ads/create', function(req, res) {
