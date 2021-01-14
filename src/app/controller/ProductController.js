@@ -4,7 +4,6 @@ const Category = require('../models/Category');
 const Product = require('../models/Product');
 const File = require('../models/File');
 
-
 module.exports = {
     async create(req, res) {
        await Category.all()
