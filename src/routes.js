@@ -10,9 +10,11 @@ router.get('/', function (req, res) {
 })
 
 router.get('/products/create', ProductController.create)
+router.get('/products/:id', ProductController.show) // arrumar! 
 router.get('/products/:id/edit', ProductController.edit)
-router.put('/products', multer.array("photo", 6),ProductController.put)
+
 router.post('/products', multer.array("photo", 6),ProductController.post)
+router.put('/products', multer.array("photo", 6),ProductController.put)
 router.delete('/products', ProductController.delete)
 
 //Alias
