@@ -6,7 +6,7 @@ const ProductController = require('./app/controller/ProductController')
 
 
 router.get('/', function (req, res) {
-    return res.render('layout.njk')
+    return res.render('home/index.njk')
 })
 
 router.get('/products/create', ProductController.create)
