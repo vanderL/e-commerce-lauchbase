@@ -3,8 +3,10 @@ const { formatPrice, date } = require('../../lib/utils')
 const Category = require('../models/Category');
 const Product = require('../models/Product');
 const File = require('../models/File');
+const { all } = require('../models/Category');
 
 module.exports = {
+    
     async create(req, res) {
        await Category.all()
         .then(function(results) {

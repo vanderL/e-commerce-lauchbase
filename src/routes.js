@@ -3,11 +3,11 @@ const router = express.Router()
 const multer = require('./app/middlewares/multer')
 
 const ProductController = require('./app/controller/ProductController')
+const HomeController = require('./app/controller/HomeController')
+const Product = require('./app/models/Product')
 
 
-router.get('/', function (req, res) {
-    return res.render('home/index.njk')
-})
+router.get('/', HomeController.index)
 
 router.get('/products/create', ProductController.create)
 router.get('/products/:id', ProductController.show) // arrumar! 
