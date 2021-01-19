@@ -14,8 +14,6 @@ module.exports = {
             let results = await Product.files(productId)
             const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
         
-            console.log("Files!!!:    " + files)
-
             return files[0]
         }
 
@@ -23,8 +21,6 @@ module.exports = {
             product.img = await getImage(product.id)
             product.oldPrice = formatPrice(product.old_price)
             product.price = formatPrice(product.price)
-
-            console.log("Produc.IMG!!!!!:    " + product.img)
 
             return product
         }).filter((product, index) => index > 2 ? false : true)
