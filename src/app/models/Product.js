@@ -82,7 +82,7 @@ module.exports = {
         
         if (category) {
             filterQuery = `${filterQuery}
-            products.category_id = ${category_id}
+            products.category_id = ${category}
             AND`
         }
 
@@ -94,19 +94,12 @@ module.exports = {
         //WHERE products.category_id = 1
         //AND products.name ilike... 
         // OR products ...
-
-        let total_query = `(
-            SELECT count(*) FROM products
-            ${filterQuery}
-        ) AS total`
-
         query = `
-            SELECT products.*, ${total_query},
+            SELECT products.*,
                 categories.name AS category_name
             FROM products
             LEFT JOIN categories ON (categories.id = products.category_id)
             ${filterQuery}
-            GROUP BY products.id, categories.name
         `
 
         return db.query(query)
