@@ -18,4 +18,8 @@ router.get('/ads/create', function(req, res) {
     return res.redirect("/products/create")
 })
 
+router.get('/accounts', function(req, res) {
+    return res.redirect("/users/register")
+})
+
 module.exports = router
