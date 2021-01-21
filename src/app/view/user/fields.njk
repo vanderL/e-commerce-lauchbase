@@ -1,6 +1,6 @@
 <div class="item">
     <div>Nome completo</div>
-    <div>
+    <div class="input">
         <input 
             type="text"
             name="name"
@@ -12,19 +12,20 @@
 
 <div class="item">
     <div>email</div>
-    <div>
+    <div class="input">
         <input 
             type="email"
             name="email"
             placeholder="Digite seu melhor email"
             value="{{user.email}}"
+            onblur="Validate.apply(this, 'isEmail')"
         >
     </div>
 </div> 
 
 <div class="item">
     <div>Senha</div>
-    <div>
+    <div class="input">
         <input 
             type="password"
             name="password"
@@ -37,7 +38,7 @@
 {% if not user.id %}
 <div class="item">
     <div>Repita a senha</div>
-    <div>
+    <div class="input">
         <input 
             type="password"
             name="passwordRepeat"
@@ -49,31 +50,33 @@
  
 <div class="item">
     <div>CPF ou CNPJ</div>
-    <div>
+    <div class="input">
         <input 
             type="text"
             name="cpf_cnpj"
             placeholder="CPF OU CNPJ"
             value="{{user.cpf_cnpj}}"
+            onkeydown="Mask.apply(this, 'cpfCnpj')"
         >
     </div>
 </div>
 
 <div class="item">
     <div>CEP</div>
-    <div>
+    <div class="input">
         <input 
             type="text"
             name="cep"
             placeholder="Digite seu CEP"
             value="{{user.cep}}"
+            onkeydown="Mask.apply(this, 'cep')"
         >
     </div>
 </div> 
 
 <div class="item">
     <div>Endereço</div>
-    <div>
+    <div class="input">
         <input 
             type="text"
             name="address"
