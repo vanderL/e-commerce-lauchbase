@@ -565,5 +565,13 @@ form .item #photos-preview img {
 .form input[name="email"],
 .form input[name="password"],
 .form input[name="passwordRepeat"] {
-    max-width: 65%;
+    max-width: 100%;
+}
+
+/* validate erros */
+.input .error {
+    background-color: #e74c3c;
+    padding: 4px;
+    border-radius: 6px;
+    color: #fff;
 }

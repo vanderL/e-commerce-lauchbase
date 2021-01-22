@@ -17,7 +17,7 @@ router.post('/reset-password', SessionController.reset)
 
 //user register UserController */
 router.get('/register', UserController.registerForm)
-//router.post('/register', UserController.post)
+router.post('/register', UserController.post)
 
 /*
 router.get('/', UserController.show)
