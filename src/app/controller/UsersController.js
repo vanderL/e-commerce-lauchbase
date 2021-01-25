@@ -5,21 +5,9 @@ module.exports = {
         return res.render('user/register')
     },
     async post(req, res){
-        const keys = Object.keys(req.body)
+        
 
-        for(key of keys) {
-            if (req.body[key] == "") {
-                return res.send('Please, fill all fields!')
-            }
-        }
-        // check if user exists [email, cpf_cnpj]
-        const { email, cpf_cnpj } = req.body
-        const user = await User.findOne({
-            where: {email},
-            or: {cpf_cnpj}
-         })
+        return res.send('passed!!!!!')
 
-        //check if password match
-    
     }
 }
