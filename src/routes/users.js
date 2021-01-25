@@ -21,9 +21,9 @@ router.post('/reset-password', SessionController.reset)
 router.get('/register', UserController.registerForm)
 router.post('/register',Validator.post, UserController.post)
 
-/*
+
 router.get('/', UserController.show)
-router.put('/', UserController.update)
+/*router.put('/', UserController.update)
 router.delete('/', UserController.delete)
 */
 module.exports = router
