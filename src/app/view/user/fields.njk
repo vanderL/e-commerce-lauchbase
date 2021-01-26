@@ -30,8 +30,11 @@
         <input 
             type="password"
             name="password"
+            {% if not user.id %}
             placeholder="Digite uma senha unica"
-            value="{{user.password}}"
+            {% else %}
+            placeholder="boa sorte!! {{user.password}}"
+            {% endif %}
         >
     </div>
 </div>
