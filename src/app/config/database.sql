@@ -67,3 +67,13 @@ INSERT INTO categories(name) VALUES ('eletronico');
 INSERT INTO categories(name) VALUES ('vestimenta');
 INSERT INTO categories(name) VALUES ('caseiro');
 INSERT INTO categories(name) VALUES ('serviço')
+
+-- connect pg simple table
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;

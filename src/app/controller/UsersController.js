@@ -7,9 +7,11 @@ module.exports = {
     show(re, res){
         return res.send('Ok, você chegou aqui!')
     },
-    async post(req, res){
+    async post(req, res) {
         
         const userId = await User.create(req.body)
+
+        req.session.userId = userId
 
         return res.redirect('/users')
 
