@@ -22,8 +22,8 @@ router.get('/register', UserController.registerForm)
 router.post('/register',Validator.post, UserController.post)
 
 
-router.get('/', UserController.show)
-/*router.put('/', UserController.update)
-router.delete('/', UserController.delete)
+router.get('/',Validator.show, UserController.show)
+router.put('/', UserController.update)
+/*router.delete('/', UserController.delete)
 */
 module.exports = router
