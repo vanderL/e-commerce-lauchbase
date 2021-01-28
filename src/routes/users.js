@@ -23,7 +23,7 @@ router.post('/register',Validator.post, UserController.post)
 
 
 router.get('/',Validator.show, UserController.show)
-router.put('/', UserController.update)
+router.put('/',Validator.update, UserController.update)
 /*router.delete('/', UserController.delete)
 */
 module.exports = router
