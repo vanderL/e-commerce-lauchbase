@@ -44,7 +44,7 @@ async function forgot(req, res, next) {
 
 async function reset(req, res, next) {
     //procurar o usuário
-    const { email, password, token } = req.body
+    const { email, password, token, passwordRepeat } = req.body
 
     const user = await User.findOne({ where: { email} })
 
@@ -62,7 +62,7 @@ async function reset(req, res, next) {
     })
 
     //vericar se o token é valido
-    if (token != use.reset_token) return res.render('session/reset-password', {
+    if (token != user.reset_token) return res.render('session/reset-password', {
         user: req.body,
         token,
         error: 'Token inválido! Solicite uma nova recuperação de senha!'

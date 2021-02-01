@@ -18,7 +18,7 @@ router.post('/logout', SessionController.logout)
 router.get('/forgot-password', SessionController.forgotForm)
 router.get('/password-reset', SessionController.resetForm)
 router.post('/forgot-password',SessionValidator.forgot, SessionController.forgot)
-router.post('/reset-password', SessionController.reset)
+router.post('/reset-password',SessionValidator.reset, SessionController.reset)
 
 //user register UserController */
 router.get('/register', UserController.registerForm)
