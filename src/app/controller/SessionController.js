@@ -57,34 +57,29 @@ module.exports = {
                 error: "Erro não esperado"
             })
         }
-        // um token para esse usuário 
-        const token = crypto.randomBytes(20).toString("hex")
-        
-        // criar uma expiração do token
-        let now = new Date()
-        now = now.setHours(now.getHours() + 1)
+    },
+    resetForm(req, res) {
+        return res.render('session/reset-password', { 
+            token: req.query.token 
+        })
+    },
+    reset(req, res) {
+        const { email, password, passwordRepeat, token } = req.body
 
-        await User.update(user.id, {
-            reset_token: token,
-            reset_token_expires: now
-        })
-        // enviar um email com um link de recuperação
-        await mailer.sendMail({
-            to: user.email,
-            from: 'no-reply@launchstore.com.br',
-            subject: 'Recuperação de password',
-            html: ` <h2> Perdeu a chave? </h2>
-            <p> Não se preocupe, clique no link a baixo para recuperar sua senha </p>
-            <p>
-                <a href="http://localhost:3000/users/password-reset?token=${token} target="_blank">
-                    Recuperar senha
-                </a>
-            </p>
-            `
-        })
-        //avisar o usuário que enviamos o link
-        return res.render('session/forgot-password', {
-            success: "Verifique seu email"
-        })
+        try {
+
+            //novo hash de senha 
+
+            // atualiza o usuário
+
+            //avisa o usuário o sucesso da operação
+            
+
+        } catch (err) {
+            console.error(err)
+            return res.render('session/reset-password', {
+                error: "Erro inesperado, tente novamente!"
+            })
+        }
     }
 }
