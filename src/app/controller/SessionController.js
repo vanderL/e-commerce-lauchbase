@@ -78,14 +78,14 @@ module.exports = {
                 reset_token_expires: ""
             })
             //avisa o usuário o sucesso da operação
-            return res.render("user/login", {
+            return res.render("session/index", {
                 user: req.body,
                 success: "Senha atualizada!! Faça o login"
             })
 
         } catch (err) {
             console.error(err)
-            return res.render('users/reset-password', {
+            return res.render('session/reset-password', {
                 user: req.body,
                 token,
                 error: "Erro inesperado, tente novamente!"
