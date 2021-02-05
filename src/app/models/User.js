@@ -1,28 +1,14 @@
-const db = require('../../app/config/db')
-const { hash } = require('bcryptjs')
-const fs = require('fs')
+const Base = require('../models/Base')
 
-const Product = require('../models/Product')
+Base.init({ table: 'users'})
 
 module.exports = {
-    async findOne(filters) {
-        let query = "SELECT * FROM users"
+    ...Base,
+   
+}
 
-        Object.keys(filters).map(key => {
-            //WHERE | OR | AND
 
-            query = `${query}
-            ${key}`
-
-            Object.keys(filters[key]).map(field => {
-                query = `${query} ${field} = '${filters[key][field]}'`
-            })
-        })
-
-        const results = await db.query(query)
-        return results.rows[0]
-        
-    },
+ /*
     async create(data){
         try {
             const query =`
@@ -99,5 +85,4 @@ module.exports = {
 
             })
         })
-    }
-}
+    }*/
