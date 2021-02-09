@@ -35,7 +35,7 @@ const Base = {
         const results = await find(filters, this.table)
         return results.rows
     },
-    async create(fields) { //User.create({ name: 'Maykk'})
+    async create(fields) { 
         try {
             let keys = [],
                 values = []
