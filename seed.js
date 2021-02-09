@@ -44,6 +44,7 @@ async function createProducts() {
             status: Math.round(Math.random())
         })
     }
+    console.log(products)
 
     const productsPromise = products.map(product => Product.create(product))
     productsIds = await Promise.all(productsPromise)
