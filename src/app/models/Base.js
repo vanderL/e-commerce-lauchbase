@@ -5,13 +5,15 @@ function find(filters, table) {
 
     if(filters) {
         Object.keys(filters).map(key => {
-            query += `${key}`
+            // WHERE | OR | AND
+            query += ` ${key}`
     
             Object.keys(filters[key]).map(field => {
-                query += `${field} = ${filters[key][field]}`
+                query += ` ${field} = '${filters[key][field]}'`
             })
         })
     }
+
     return db.query(query)
 }
 

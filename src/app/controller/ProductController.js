@@ -56,7 +56,6 @@ module.exports = {
     },
     async show(req, res) {
         const product = await Product.find(req.params.id)
-
         if(!product) return res.send("Product Not Found!")
 
         const {day, hour, minutes, month} = date(product.updated_at)
