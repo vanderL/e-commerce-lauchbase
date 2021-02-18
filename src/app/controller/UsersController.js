@@ -84,8 +84,6 @@ module.exports = {
 
             let promiseResults = await Promise.all(allFilesPromise)
 
-
-
             await User.delete(req.body.id)
             req.session.destroy()
 
