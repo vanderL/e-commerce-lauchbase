@@ -79,7 +79,7 @@ module.exports = {
         try {
             const products = await Product.findAll({where: { user_id: req.body.id }})
                
-            const allFilesPromise = products.map(Product => 
+            const allFilesPromise = products.map(product => 
                 Product.files(product.id))
 
             let promiseResults = await Promise.all(allFilesPromise)
