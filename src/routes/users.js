@@ -29,4 +29,6 @@ router.get('/', onlyUsers, UserValidator.show, UserController.show)
 router.put('/',UserValidator.update, UserController.update)
 router.delete('/', UserController.delete)
 
+router.get('/ads', UserController.ads)
+
 module.exports = router

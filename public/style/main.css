@@ -555,10 +555,6 @@ form .item #photos-preview img {
     font-weight: bold;
 }
 
-/* user register */
-.user-register.container.form {
-    max-width: 500px;
-}
 
 .form input[name="cep"],
 .form input[name="cpf_cnpj"],
