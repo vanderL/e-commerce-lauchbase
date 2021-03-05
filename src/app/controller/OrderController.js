@@ -39,7 +39,7 @@ module.exports = {
 
         })
 
-        return res.render('orders/sucess')
+        return res.render('orders/success')
 
         } catch (error) {
             console.error(error)

@@ -154,3 +154,13 @@
     font-size: 14px;
     letter-spacing: .4px;
 }
+
+.product-single .unavaible {
+    font-size: 14px;
+    color: #ccc;
+    font-weight: bold;
+
+    background: #fff;
+
+    padding: 8px 16px;
+}
