@@ -10,16 +10,67 @@ const Cart = {
             this.total = {
                 quantity: 0,
                 price: 0,
-                formattedPrice: formattedPrice(0)
+                formattedPrice: formatPrice(0)
             }
         }
 
         return this
     },
-    addOne(product){},
+    addOne(product){
+        let inCart = this.items.find(item => item.product.id == product.id)
+
+        if(!inCart) {
+            inCart = {
+                product: {
+                    ...product,
+                    formattedPrice: formatPrice(product.price)
+                },
+                quantity: 0,
+                price: 0,
+                formattedPrice: formatPrice(0)
+            }
+
+            this.items.push(inCart)
+        }
+
+        if(inCart.quantity >= product.quantity) return this 
+
+        inCart.quantity++
+        inCart.price = inCart.product.price * inCart.quantity
+        inCart.formattedPrice = formatPrice(inCart.price)
+
+        this.total.quantity++
+        this.total.price += inCart.product.price
+        this.total.formattedPrice = formatPrice(this.total.price)
+
+        return this
+
+    },
     removeOne(productId){},
     delete(productId){}
 }
-console.log(Cart.init({items: [1, 2, 3], total: { quantity: 50 }}))
 
+const product = {
+    id: 1,
+    price: 199,
+    quantity: 2
+}
+
+const product2 = {
+    id: 2,
+    price: 599,
+    quantity: 1
+}
+
+console.log('add first cart item')
+let oldCart = Cart.init().addOne(product)
+console.log(oldCart)
+
+console.log('add second cart item')
+oldCart = Cart.init(oldCart).addOne(product2)
+console.log(oldCart)
+
+console.log('add third cart item')
+oldCart = Cart.init(oldCart).addOne(product2)
+console.log(oldCart)
 module.exports = Cart
