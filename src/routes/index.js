@@ -5,12 +5,14 @@ const HomeController = require('../app/controller/HomeController')
 
 const users = require('./users')
 const products = require('./products')
+const cart = require('./cart')
 
 //HOME
 router.get('/', HomeController.index)
 
 router.use('/users', users)
 router.use('/', products)
+router.use('/cart', cart)
 
 
 //Alias
