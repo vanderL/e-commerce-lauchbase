@@ -59,12 +59,15 @@ const Cart = {
         this.total.price -= inCart.product.price
         this.total.formattedPrice = formatPrice(this.total.price)
 
-        if(!inCart.quantity < 1) {
+        if(inCart.quantity < 1) {
             this.items = this.items.filter(item => 
                 item.product.id != inCart.product.id)
+            
+            return this
         }
 
         return this
+
     },
     delete(productId){
         const inCart = this.getCartItem(productId)
