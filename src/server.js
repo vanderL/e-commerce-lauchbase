@@ -26,6 +26,6 @@ nunjucks.configure("src/app/view", {
 })
 
 
-server.listen(5000, function (){
+server.listen(3333, function (){
     console.log('Hello my lord, server is running, but i know who door')
 })
