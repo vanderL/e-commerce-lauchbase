@@ -33,6 +33,11 @@ module.exports = {
         return res.render("orders/index", { orders } )
     },
 
+    async show (req, res) {
+        const { id } = req.params
+        return res.send(`Olá, aqui ficará os detalhes do ${id}! Aguarde, em breve estará pronto`)
+    },
+
     async post(req, res) {
         try {
             const cart = Cart.init(req.session.cart)
