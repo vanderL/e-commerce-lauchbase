@@ -34,8 +34,11 @@ module.exports = {
     },
 
     async show (req, res) {
-        const { id } = req.params
-        return res.send(`Olá, aqui ficará os detalhes do ${id}! Aguarde, em breve estará pronto`)
+        const order = await LoadOrderService.load('order', {
+            where: { id: req.params.id }
+        })
+
+        return res.render('orders/details', { order } )
     },
 
     async post(req, res) {
@@ -58,6 +61,7 @@ module.exports = {
                     product_id,
                     price,
                     total,
+                    quantity,
                     status
                 })
 
