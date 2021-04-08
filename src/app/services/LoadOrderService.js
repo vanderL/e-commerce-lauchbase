@@ -5,7 +5,7 @@ const LoadProductsService = require('./LoadProductsService')
 const { formatPrice, date } = require('../../lib/utils')
 
 async function format(order) {
-    order.product = await LoadProductsService.load('product', {
+    order.product = await LoadProductsService.load('productWithDeleted', {
         where: { id: order.product_id }
     })
 
